@@ -1,0 +1,21 @@
+[package]
+name = "ytframes"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Download a YouTube video and extract frames."
+repository = "https://github.com/yourname/ytframes"
+
+[dependencies]
+anyhow = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "process", "fs"] }
+clap = { version = "4", features = ["derive"] }
+youtube_dl = { version = "0.11", features = ["tokio", "downloader-rustls-tls"] }
+ffmpeg_cli = "0.4"
+tempfile = "3"
+which = "6"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
